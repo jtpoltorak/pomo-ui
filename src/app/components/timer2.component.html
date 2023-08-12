@@ -1,0 +1,39 @@
+<div>
+  <div
+    style="
+      font-weight: bold;
+      font-size: 2rem;
+      font-family: monospace;
+    "
+  >
+    {{ remainingDurationInMs | date : 'mm:ss' }}
+    <span
+      *ngIf="showCompleteMsg"
+      style="color: red"
+      >Completed!</span
+    >
+  </div>
+  <div>
+    <button
+      #startButton
+      type="button"
+      (click)="onStartButtonClick()"
+    >
+      Start
+    </button>
+    <button
+      #pauseButton
+      type="button"
+      (click)="onPauseButtonClick()"
+    >
+      Pause
+    </button>
+    <button
+      #resetButton
+      type="button"
+      (click)="onRestartButtonClick()"
+    >
+      Restart
+    </button>
+  </div>
+</div>
