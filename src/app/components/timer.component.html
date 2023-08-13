@@ -1,39 +1,36 @@
-<div>
-  <div
-    style="
-      font-weight: bold;
-      font-size: 2rem;
-      font-family: monospace;
-    "
-  >
-    {{ remainingDurationInMs | date : 'mm:ss' }}
+<div class="flex flex-col items-center justify-center">
+  <div class="font-sans text-9xl text-white">
+    {{ remainingDurationInMs | date: 'mm:ss' }}
     <span
       *ngIf="showCompleteMsg"
       style="color: red"
       >Completed!</span
     >
   </div>
-  <div>
+  <div class="flex flex-row text-white">
     <button
+      class="p-2 text-2xl"
       #startButton
       type="button"
       (click)="onStartButtonClick()"
     >
-      Start
+      <fa-icon [icon]="['fas', 'play']"></fa-icon>
     </button>
     <button
+      class="p-2 text-2xl"
       #pauseButton
       type="button"
       (click)="onPauseButtonClick()"
     >
-      Pause
+      <fa-icon [icon]="['fas', 'pause']"></fa-icon>
     </button>
     <button
+      class="p-2 text-2xl"
       #resetButton
       type="button"
       (click)="onRestartButtonClick()"
     >
-      Restart
+      <fa-icon [icon]="['fas', 'rotate-left']"></fa-icon>
     </button>
   </div>
 </div>

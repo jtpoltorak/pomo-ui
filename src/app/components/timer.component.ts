@@ -60,6 +60,7 @@ export class TimerComponent implements OnInit {
   }
 
   private _restartCountdown(): void {
+    this.showCompleteMsg = false;
     this.remainingDurationInMs = this.startingDurationInMs;
     this._initiateCountdown();
   }
