@@ -7,9 +7,9 @@
       >Completed!</span
     >
   </div>
-  <div class="flex flex-row text-white">
+  <div class="flex flex-row text-black">
     <button
-      class="p-2 text-2xl"
+      class="m-4 text-2xl w-12 h-12 rounded-full bg-white"
       #startButton
       type="button"
       (click)="onStartButtonClick()"
@@ -17,7 +17,7 @@
       <fa-icon [icon]="['fas', 'play']"></fa-icon>
     </button>
     <button
-      class="p-2 text-2xl"
+      class="m-4 text-2xl w-12 h-12 rounded-full bg-white"
       #pauseButton
       type="button"
       (click)="onPauseButtonClick()"
@@ -25,7 +25,7 @@
       <fa-icon [icon]="['fas', 'pause']"></fa-icon>
     </button>
     <button
-      class="p-2 text-2xl"
+      class="m-4 text-2xl w-12 h-12 rounded-full bg-white"
       #resetButton
       type="button"
       (click)="onRestartButtonClick()"
