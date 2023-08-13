@@ -1,10 +1,2 @@
 <p>{{ title }}</p>
-
-<h1>Default timer (25 min)</h1>
-<app-timer2></app-timer2>
-
-<h1>Short timer (5 min)</h1>
-<app-timer2 [startingDurationInMs]="5 * 60 * 1000"></app-timer2>
-
-<h1>Very short timer (3 sec)</h1>
-<app-timer2 [startingDurationInMs]="3000"></app-timer2>
+<app-timer [startingDurationInMs]="5000"></app-timer>

@@ -6,7 +6,7 @@
       font-family: monospace;
     "
   >
-    {{ remainingInMs | date : 'mm:ss' }}
+    {{ remainingDurationInMs | date : 'mm:ss' }}
     <span
       *ngIf="showCompleteMsg"
       style="color: red"
@@ -17,20 +17,23 @@
     <button
       #startButton
       type="button"
+      (click)="onStartButtonClick()"
     >
       Start
     </button>
     <button
       #pauseButton
       type="button"
+      (click)="onPauseButtonClick()"
     >
       Pause
     </button>
     <button
       #resetButton
       type="button"
+      (click)="onRestartButtonClick()"
     >
-      Reset
+      Restart
     </button>
   </div>
 </div>
