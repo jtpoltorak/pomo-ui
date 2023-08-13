@@ -36,6 +36,14 @@ export class TimerComponent implements OnInit {
   }
 
   private _startCountdown(): void {
+    if (this.remainingDurationInMs == 0) {
+      this._restartCountdown();
+    } else {
+      this._initiateCountdown();
+    }
+  }
+
+  private _initiateCountdown(): void {
     clearInterval(this.intervalID);
     this.intervalID = setInterval(() => {
       this.remainingDurationInMs -= 1000;
@@ -45,7 +53,6 @@ export class TimerComponent implements OnInit {
         this.showCompleteMsg = true;
       }
     }, 1000);
-    console.log('this.intervalID = ', this.intervalID);
   }
 
   private _pauseCountdown(): void {
@@ -54,6 +61,6 @@ export class TimerComponent implements OnInit {
 
   private _restartCountdown(): void {
     this.remainingDurationInMs = this.startingDurationInMs;
-    this._startCountdown();
+    this._initiateCountdown();
   }
 }
