@@ -18,8 +18,8 @@ import {
   faArrowAltCircleLeft as farArrowAltCircleLeft,
 } from '@fortawesome/free-regular-svg-icons';
 import {
-  faSquare,
-  faCheckSquare,
+  faRightLong,
+  faLeftLong,
   faPlay,
   faPause,
   faRotateLeft,
@@ -39,8 +39,6 @@ import { TimerComponent } from './components/timer.component';
 export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIcons(
-      faSquare,
-      faCheckSquare,
       farCirclePlay,
       farArrowAltCircleLeft,
       farSquare,
@@ -48,6 +46,9 @@ export class AppModule {
       faStackOverflow,
       faGithub,
       faMedium,
+
+      faRightLong,
+      faLeftLong,
       faPlay,
       faPause,
       faRotateLeft,

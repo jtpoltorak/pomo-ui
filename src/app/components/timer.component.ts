@@ -1,67 +1,68 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { Subscription } from 'rxjs';
+import { TimerService } from '../services/timer.service';
+import { TimerState } from '../services/timer.model';
+
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss'],
 })
 export class TimerComponent implements OnInit {
-  @Input() startingDurationInMs = 25 * 60 * 1000;
-  remainingDurationInMs = 0;
-  intervalID: any;
-  showCompleteMsg = false;
+  timeLeft = 0;
+  startPauseButtonText = 'Start';
+  private timeLeftSubscription: Subscription;
+  private timerStateSubscription: Subscription;
 
-  ngOnInit(): void {
-    this.remainingDurationInMs = this.startingDurationInMs;
-    console.log(
-      'this.startingDurationInMs = ',
-      this.startingDurationInMs,
-    );
+  constructor(public timerService: TimerService) {
+    this.timerService.setTimer(25 * 60 * 1000);
+    this.timeLeftSubscription =
+      this.timerService.timeLeft$.subscribe(
+        (timeLeft: number) => {
+          this.timeLeft = timeLeft;
+        },
+      );
+    this.timerStateSubscription =
+      this.timerService.timerState$.subscribe(
+        (timerState: TimerState) => {
+          if (timerState === TimerState.Running) {
+            this.startPauseButtonText = 'Pause';
+          } else {
+            this.startPauseButtonText = 'Start';
+          }
+        },
+      );
   }
 
-  onStartButtonClick(): void {
-    console.log(
-      'this.remainingDurationInMs = ',
-      this.remainingDurationInMs,
-    );
-    this._startCountdown();
+  ngOnInit(): void {}
+
+  ngOnDestroy() {
+    this.timeLeftSubscription.unsubscribe();
+    this.timerStateSubscription.unsubscribe();
   }
 
-  onPauseButtonClick(): void {
-    this._pauseCountdown();
+  onWorkButtonClick(): void {
+    this.timerService.setTimer(25 * 60 * 1000);
   }
 
-  onRestartButtonClick(): void {
-    this._restartCountdown();
+  onShortBreakButtonClick(): void {
+    this.timerService.setTimer(5 * 60 * 1000);
   }
 
-  private _startCountdown(): void {
-    if (this.remainingDurationInMs == 0) {
-      this._restartCountdown();
+  onLongBreakButtonClick(): void {
+    this.timerService.setTimer(15 * 60 * 1000);
+  }
+
+  onStartPauseButtonClick(): void {
+    if (this.startPauseButtonText === 'Start') {
+      this.timerService.startTimer();
     } else {
-      this._initiateCountdown();
+      this.timerService.pauseTimer();
     }
   }
 
-  private _initiateCountdown(): void {
-    clearInterval(this.intervalID);
-    this.intervalID = setInterval(() => {
-      this.remainingDurationInMs -= 1000;
-      if (this.remainingDurationInMs <= 0) {
-        // this.remainingDurationInMs = this.startingDurationInMs;
-        clearInterval(this.intervalID);
-        this.showCompleteMsg = true;
-      }
-    }, 1000);
-  }
-
-  private _pauseCountdown(): void {
-    clearInterval(this.intervalID);
-  }
-
-  private _restartCountdown(): void {
-    this.showCompleteMsg = false;
-    this.remainingDurationInMs = this.startingDurationInMs;
-    this._initiateCountdown();
+  onResetButtonClick(): void {
+    this.timerService.resetTimer();
   }
 }

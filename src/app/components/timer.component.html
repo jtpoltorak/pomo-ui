@@ -1,36 +1,44 @@
 <div class="flex flex-col items-center justify-center">
-  <div class="font-sans text-9xl text-white">
-    {{ remainingDurationInMs | date: 'mm:ss' }}
-    <span
-      *ngIf="showCompleteMsg"
-      style="color: red"
-      >Completed!</span
+  <div class="flex flex-row items-center justify-center space-x-2">
+    <button
+      type="button"
+      class="btn-primary"
+      (click)="onWorkButtonClick()"
     >
+      Work
+    </button>
+    <button
+      type="button"
+      class="btn-primary"
+      (click)="onShortBreakButtonClick()"
+    >
+      Short Break
+    </button>
+    <button
+      type="button"
+      class="btn-primary"
+      (click)="onLongBreakButtonClick()"
+    >
+      Long Break
+    </button>
   </div>
-  <div class="flex flex-row text-black">
+  <div class="font-mono text-8xl font-bold text-white py-4 px-2">
+    {{ timeLeft | date: 'mm:ss' }}
+  </div>
+  <div class="flex flex-row items-center justify-center space-x-2">
     <button
-      class="m-4 text-2xl w-12 h-12 rounded-full bg-white"
-      #startButton
       type="button"
-      (click)="onStartButtonClick()"
+      class="btn-primary"
+      (click)="onStartPauseButtonClick()"
     >
-      <fa-icon [icon]="['fas', 'play']"></fa-icon>
+      {{ startPauseButtonText }}
     </button>
     <button
-      class="m-4 text-2xl w-12 h-12 rounded-full bg-white"
-      #pauseButton
       type="button"
-      (click)="onPauseButtonClick()"
+      class="btn-primary"
+      (click)="onResetButtonClick()"
     >
-      <fa-icon [icon]="['fas', 'pause']"></fa-icon>
-    </button>
-    <button
-      class="m-4 text-2xl w-12 h-12 rounded-full bg-white"
-      #resetButton
-      type="button"
-      (click)="onRestartButtonClick()"
-    >
-      <fa-icon [icon]="['fas', 'rotate-left']"></fa-icon>
+      Reset
     </button>
   </div>
 </div>
