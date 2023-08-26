@@ -35,7 +35,7 @@
     </button>
   </div>
   <div
-    class="font-mono text-8xl font-bold font text-white py-5 px-2"
+    class="font-mono text-8xl font-bold font text-gray-800 py-5 px-2"
     [ngClass]="
       timerState === timerStates.Paused
         ? 'animate-pulse'
@@ -49,14 +49,14 @@
   >
     <button
       type="button"
-      class="btn-primary"
+      class="btn-primary w-24"
       (click)="onStartPauseButtonClick()"
     >
       {{ startPauseButtonText }}
     </button>
     <button
       type="button"
-      class="btn-primary"
+      class="btn-primary w-24"
       (click)="onResetButtonClick()"
     >
       reset
