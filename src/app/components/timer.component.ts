@@ -87,4 +87,14 @@ export class TimerComponent implements OnInit {
   onResetButtonClick(): void {
     this.timerService.resetTimer();
   }
+
+  onMuteButtonClick(): void {}
+
+  onAutoplayButtonClick(): void {}
+
+  onSettingsButtonClick(): void {}
+
+  onHelpButtonClick(): void {}
+
+  onAboutButtonClick(): void {}
 }

@@ -1,5 +1,7 @@
 <div class="flex flex-col items-center justify-center">
-  <div class="flex flex-row items-center justify-center">
+  <div
+    class="flex flex-row items-center justify-center my-3"
+  >
     <button
       type="button"
       [ngClass]="
@@ -35,7 +37,7 @@
     </button>
   </div>
   <div
-    class="font-mono text-8xl font-bold font text-gray-800 py-5 px-2"
+    class="text-8xl font-bold font text-gray-800 my-3 w-64"
     [ngClass]="
       timerState === timerStates.Paused
         ? 'animate-pulse'
@@ -45,7 +47,7 @@
     {{ timeLeft | date: 'mm:ss' }}
   </div>
   <div
-    class="flex flex-row items-center justify-center space-x-2"
+    class="flex flex-row items-center justify-center space-x-2 my-3"
   >
     <button
       type="button"
@@ -62,4 +64,42 @@
       reset
     </button>
   </div>
+  <div
+    class="flex flex-row items-center justify-center space-x-4 mt-3"
+  >
+    <button
+      type="button"
+      (click)="onMuteButtonClick()"
+    >
+      <fa-icon [icon]="['fas', 'volume-low']"></fa-icon>
+    </button>
+    <button
+      type="button"
+      (click)="onAutoplayButtonClick()"
+    >
+      <fa-icon [icon]="['fas', 'repeat']"></fa-icon>
+    </button>
+    <button
+      type="button"
+      (click)="onSettingsButtonClick()"
+    >
+      <fa-icon [icon]="['fas', 'sliders']"></fa-icon>
+    </button>
+    <button
+      type="button"
+      (click)="onHelpButtonClick()"
+    >
+      <fa-icon [icon]="['fas', 'question']"></fa-icon>
+    </button>
+    <button
+      type="button"
+      (click)="onAboutButtonClick()"
+    >
+      <fa-icon [icon]="['fas', 'info']"></fa-icon>
+    </button>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="flex flex-row items-center justify-center my-3">
+  &copy; 2023 aba llc / all rights reserved
 </div>

@@ -11,19 +11,14 @@ import {
   faGithub,
   faMedium,
 } from '@fortawesome/free-brands-svg-icons';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import {
-  faSquare as farSquare,
-  faCheckSquare as farCheckSquare,
-  faCirclePlay as farCirclePlay,
-  faArrowAltCircleLeft as farArrowAltCircleLeft,
-} from '@fortawesome/free-regular-svg-icons';
-import {
-  faRightLong,
-  faLeftLong,
-  faPlay,
-  faPause,
-  faRotateLeft,
-  faBars,
+  faVolumeLow,
+  faVolumeMute,
+  faRepeat,
+  faSliders,
+  faQuestion,
+  faInfo,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,27 +27,23 @@ import { TimerComponent } from './components/timer.component';
 
 @NgModule({
   declarations: [AppComponent, TimerComponent],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIcons(
-      farCirclePlay,
-      farArrowAltCircleLeft,
-      farSquare,
-      farCheckSquare,
-      faStackOverflow,
-      faGithub,
-      faMedium,
-
-      faRightLong,
-      faLeftLong,
-      faPlay,
-      faPause,
-      faRotateLeft,
-      faBars,
+      faVolumeLow,
+      faVolumeMute,
+      faRepeat,
+      faSliders,
+      faQuestion,
+      faInfo,
     );
   }
 }
