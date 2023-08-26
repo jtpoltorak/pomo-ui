@@ -1,31 +1,52 @@
 <div class="flex flex-col items-center justify-center">
-  <div class="flex flex-row items-center justify-center space-x-2">
+  <div class="flex flex-row items-center justify-center">
     <button
       type="button"
-      class="btn-primary"
+      [ngClass]="
+        selectedPhase === 'work'
+          ? 'btn-group-primary-left-clicked'
+          : 'btn-group-primary-left'
+      "
       (click)="onWorkButtonClick()"
     >
-      Work
+      work
     </button>
     <button
       type="button"
-      class="btn-primary"
+      [ngClass]="
+        selectedPhase === 'short break'
+          ? 'btn-group-primary-middle-clicked'
+          : 'btn-group-primary-middle'
+      "
       (click)="onShortBreakButtonClick()"
     >
-      Short Break
+      short break
     </button>
     <button
       type="button"
-      class="btn-primary"
+      [ngClass]="
+        selectedPhase === 'long break'
+          ? 'btn-group-primary-right-clicked'
+          : 'btn-group-primary-right'
+      "
       (click)="onLongBreakButtonClick()"
     >
-      Long Break
+      long break
     </button>
   </div>
-  <div class="font-mono text-8xl font-bold text-white py-4 px-2">
+  <div
+    class="font-mono text-8xl font-bold font text-white py-5 px-2"
+    [ngClass]="
+      timerState === timerStates.Paused
+        ? 'animate-pulse'
+        : 'animate-none'
+    "
+  >
     {{ timeLeft | date: 'mm:ss' }}
   </div>
-  <div class="flex flex-row items-center justify-center space-x-2">
+  <div
+    class="flex flex-row items-center justify-center space-x-2"
+  >
     <button
       type="button"
       class="btn-primary"
@@ -38,7 +59,7 @@
       class="btn-primary"
       (click)="onResetButtonClick()"
     >
-      Reset
+      reset
     </button>
   </div>
 </div>

@@ -8,15 +8,14 @@ import {
 } from 'rxjs';
 import { takeWhile, tap } from 'rxjs/operators';
 
-import { TimerState } from './timer.model';
+import { TimerState } from '../models/timer.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TimerService {
-  private initialTime: number = 60 * 1000; // Let's assume 60 seconds for this example
-
   // timer
+  private originalTimeLeft = 60 * 1000;
   private timeLeft = 60 * 1000;
   private timeLeftSubject = new BehaviorSubject<number>(
     this.timeLeft,
@@ -26,19 +25,17 @@ export class TimerService {
     this.timeLeftSubject.asObservable();
 
   // timer state
-  private timerState = TimerState.Stopped;
   private timerStateSubject =
     new BehaviorSubject<TimerState>(TimerState.Stopped);
   timerState$: Observable<TimerState> =
     this.timerStateSubject.asObservable();
 
   setTimer(timeLeft: number): void {
-    this.timeLeft = timeLeft;
+    this.timeLeft = this.originalTimeLeft = timeLeft;
     this.timeLeftSubject.next(this.timeLeft);
   }
 
   startTimer(): void {
-    console.log('here');
     if (
       !this.timeLeftSubscription ||
       this.timeLeftSubscription.closed
@@ -49,10 +46,8 @@ export class TimerService {
           takeWhile(() => this.timeLeft >= 0),
         )
         .subscribe({
-          next: () => {
-            console.log('time left: ', this.timeLeft);
-            this.timeLeftSubject.next(this.timeLeft);
-          },
+          next: () =>
+            this.timeLeftSubject.next(this.timeLeft),
           complete: () => this.stopTimer(),
         });
     }
@@ -73,7 +68,7 @@ export class TimerService {
   }
 
   resetTimer(): void {
-    this.timeLeft = this.initialTime;
+    this.timeLeft = this.originalTimeLeft;
     this.timeLeftSubject.next(this.timeLeft);
     this.pauseTimer();
   }

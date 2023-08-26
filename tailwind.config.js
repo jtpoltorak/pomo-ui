@@ -4,8 +4,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['sofia sans', 'Poppins'],
-        mono: ['JetBrains Mono', 'Victor Mono'],
+        sans: ['Poppins', 'roboto condensed', 'sofia sans'],
+        mono: [
+          'roboto mono',
+          'JetBrains Mono',
+          'Victor Mono',
+        ],
       },
     },
   },
