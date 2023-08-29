@@ -19,9 +19,11 @@ module.exports = {
         ],
         serif: ['libre baskerville'],
         mono: [
-          'roboto mono',
-          'jetbrains mono',
+          'noto sans mono',
           'victor mono',
+          'roboto mono',
+          'martian mono',
+          'jetbrains mono',
         ],
       },
       animation: {

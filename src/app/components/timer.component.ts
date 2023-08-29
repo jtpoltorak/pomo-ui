@@ -23,6 +23,8 @@ export class TimerComponent implements OnInit {
   private timeLeftSubscription: Subscription;
   private timerStateSubscription: Subscription;
 
+  timerFormat: 'colon' | 'chars' = 'chars';
+
   showModal = true;
 
   constructor(

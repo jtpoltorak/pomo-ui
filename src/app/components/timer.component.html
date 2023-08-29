@@ -37,14 +37,24 @@
     </button>
   </div>
   <div
-    class="w-64 mt-3 font-bold text-gray-800 text-8xl font"
+    class="my-3 font-mono font-bold text-gray-800 text-8xl font-outline-2"
     [ngClass]="
       timerState === timerStates.Paused
         ? 'animate-pulse'
         : 'animate-none'
     "
   >
-    {{ timeLeft | date: 'mm:ss' }}
+    <div [ngSwitch]="timerFormat">
+      <span *ngSwitchCase="'colon'">
+        {{ timeLeft | date: 'mm:ss' }}
+      </span>
+      <span *ngSwitchCase="'chars'">
+        {{ timeLeft | date: 'mm'
+        }}<span class="text-6xl">m</span
+        >{{ timeLeft | date: 'ss'
+        }}<span class="text-6xl">s</span>
+      </span>
+    </div>
   </div>
   <div
     class="flex flex-row items-center justify-center my-3 space-x-2"
