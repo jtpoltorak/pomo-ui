@@ -37,7 +37,7 @@
     </button>
   </div>
   <div
-    class="text-8xl font-bold font text-gray-800 my-3 w-64"
+    class="w-64 my-3 font-bold text-gray-800 text-8xl font"
     [ngClass]="
       timerState === timerStates.Paused
         ? 'animate-pulse'
@@ -47,25 +47,25 @@
     {{ timeLeft | date: 'mm:ss' }}
   </div>
   <div
-    class="flex flex-row items-center justify-center space-x-2 my-3"
+    class="flex flex-row items-center justify-center my-3 space-x-2"
   >
     <button
       type="button"
-      class="btn-primary w-24"
+      class="w-24 btn-primary"
       (click)="onStartPauseButtonClick()"
     >
       {{ startPauseButtonText }}
     </button>
     <button
       type="button"
-      class="btn-primary w-24"
+      class="w-24 btn-primary"
       (click)="onResetButtonClick()"
     >
       reset
     </button>
   </div>
   <div
-    class="flex flex-row items-center justify-center space-x-4 mt-3"
+    class="flex flex-row items-center justify-center mt-3 space-x-4"
   >
     <button
       type="button"
