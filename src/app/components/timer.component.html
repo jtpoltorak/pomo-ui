@@ -98,6 +98,7 @@
     <button
       type="button"
       (click)="onHelpButtonClick()"
+      data-hs-overlay="#hs-overlay-right"
     >
       <fa-icon [icon]="['fas', 'question']"></fa-icon>
     </button>
@@ -111,5 +112,15 @@
 </div>
 <hr class="my-6" />
 <div class="flex flex-row items-center justify-center my-3">
-  &copy; 2023 aba llc / all rights reserved
+  &copy; 2023 Paguroidea, inc. / all rights reserved
 </div>
+
+<app-sidebar-help
+  [isVisible]="showSidebarHelp"
+  (visibleChange)="showSidebarHelp = $event"
+></app-sidebar-help>
+
+<app-sidebar-about
+  [isVisible]="showSidebarAbout"
+  (visibleChange)="showSidebarAbout = $event"
+></app-sidebar-about>

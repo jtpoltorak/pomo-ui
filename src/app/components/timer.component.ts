@@ -9,7 +9,6 @@ import { TimerState } from '../models/timer.model';
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.scss'],
   providers: [DatePipe],
 })
 export class TimerComponent implements OnInit {
@@ -25,7 +24,8 @@ export class TimerComponent implements OnInit {
 
   timerFormat: 'colon' | 'chars' = 'chars';
 
-  showModal = true;
+  showSidebarHelp = false;
+  showSidebarAbout = false;
 
   constructor(
     private timerService: TimerService,
@@ -98,7 +98,11 @@ export class TimerComponent implements OnInit {
 
   onSettingsButtonClick(): void {}
 
-  onHelpButtonClick(): void {}
+  onHelpButtonClick(): void {
+    this.showSidebarHelp = true;
+  }
 
-  onAboutButtonClick(): void {}
+  onAboutButtonClick(): void {
+    this.showSidebarAbout = true;
+  }
 }
