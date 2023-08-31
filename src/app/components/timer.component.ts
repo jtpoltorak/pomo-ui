@@ -5,6 +5,8 @@ import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { TimerService } from '../services/timer.service';
 import { TimerState } from '../models/timer.model';
+import { SettingsService } from '../services/settings.service';
+import { Settings } from '../models/settings.model';
 
 @Component({
   selector: 'app-timer',
@@ -12,6 +14,12 @@ import { TimerState } from '../models/timer.model';
   providers: [DatePipe],
 })
 export class TimerComponent implements OnInit {
+  settings: Settings | undefined = undefined;
+  readonly defaultSettings: Settings = {
+    timeFormat: 'chars',
+    showProgressBar: true,
+  };
+
   timeStart = 25 * 60 * 1000;
   timeLeft = this.timeStart;
   timerState = TimerState.Stopped;
@@ -24,16 +32,29 @@ export class TimerComponent implements OnInit {
   private timerStateSubscription: Subscription;
 
   timerFormat: 'colon' | 'chars' = 'chars';
+  showProgressBar = true;
 
   isSidebarVisible = false;
-  currentSidebarComponent: 'help' | 'about' | undefined =
-    undefined;
+  currentSidebarComponent:
+    | 'settings'
+    | 'help'
+    | 'about'
+    | undefined = undefined;
 
   constructor(
+    private settingsService: SettingsService,
     private timerService: TimerService,
     private titleService: Title,
     private datePipe: DatePipe,
   ) {
+    this.settings = this.settingsService.getSettings();
+    console.log(
+      'in timer.component, just read settings = ',
+      this.settings,
+    );
+    if (!this.settings) {
+      this.settings = this.defaultSettings;
+    }
     this.timerService.setTimer(this.timeLeft);
     this.timeLeftSubscription =
       this.timerService.timeLeft$.subscribe(
@@ -101,7 +122,10 @@ export class TimerComponent implements OnInit {
 
   onAutoplayButtonClick(): void {}
 
-  onSettingsButtonClick(): void {}
+  onSettingsButtonClick(): void {
+    this.isSidebarVisible = true;
+    this.currentSidebarComponent = 'settings';
+  }
 
   onHelpButtonClick(): void {
     this.isSidebarVisible = true;
@@ -111,5 +135,13 @@ export class TimerComponent implements OnInit {
   onAboutButtonClick(): void {
     this.isSidebarVisible = true;
     this.currentSidebarComponent = 'about';
+  }
+
+  onSettingsChange(newSettings: Settings): void {
+    this.isSidebarVisible = false;
+    this.settings = newSettings;
+    this.timerFormat = this.settings.timeFormat;
+    this.showProgressBar = this.settings.showProgressBar;
+    this.settingsService.saveSettings(newSettings);
   }
 }

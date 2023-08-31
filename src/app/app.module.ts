@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Font Awesome imports
 import {
@@ -28,6 +29,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TimerComponent } from './components/timer.component';
+import { SettingsComponent } from './components/settings.component';
 import { HelpComponent } from './components/help.component';
 import { AboutComponent } from './components/about.component';
 
@@ -35,12 +37,14 @@ import { AboutComponent } from './components/about.component';
   declarations: [
     AppComponent,
     TimerComponent,
+    SettingsComponent,
     HelpComponent,
     AboutComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     FontAwesomeModule,
     ProgressBarModule,

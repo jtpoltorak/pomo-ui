@@ -56,7 +56,10 @@
       </span>
     </div>
   </div>
-  <div class="w-60">
+  <div
+    *ngIf="showProgressBar"
+    class="w-60"
+  >
     <p-progressBar
       [color]="'#4b5563'"
       [style]="{ border: '2px solid #fff' }"
@@ -139,12 +142,18 @@
       [ngSwitch]="currentSidebarComponent"
       class="text-2xl font-bold"
     >
+      <span *ngSwitchCase="'settings'">Settings</span>
       <span *ngSwitchCase="'help'">Help</span>
       <span *ngSwitchCase="'about'">About</span>
     </h2>
   </ng-template>
   <ng-template pTemplate="content">
     <div [ngSwitch]="currentSidebarComponent">
+      <app-settings
+        *ngSwitchCase="'settings'"
+        [settings]="settings"
+        (settingsChange)="onSettingsChange($event)"
+      ></app-settings>
       <app-help *ngSwitchCase="'help'"></app-help>
       <app-about *ngSwitchCase="'about'"></app-about>
     </div>

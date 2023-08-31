@@ -1,0 +1,35 @@
+<form
+  [formGroup]="settingsFormGroup"
+  (ngSubmit)="onSubmit()"
+>
+  <div>
+    <label>
+      Time format:<br />
+      <input
+        id="timeFormatColon"
+        type="radio"
+        value="colon"
+        formControlName="timeFormat"
+      />
+      <label for="timeFormatColon">12:34</label>
+      <input
+        id="timeFormatChars"
+        type="radio"
+        value="chars"
+        formControlName="timeFormat"
+      />
+      <label for="timeFormatChars">12m34s</label>
+    </label>
+  </div>
+  <div>
+    <label>
+      Show progress bar:
+      <input
+        id="showProgressBar"
+        type="checkbox"
+        formControlName="showProgressBar"
+      />
+    </label>
+  </div>
+  <button type="submit">Save</button>
+</form>
