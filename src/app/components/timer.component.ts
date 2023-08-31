@@ -12,7 +12,8 @@ import { TimerState } from '../models/timer.model';
   providers: [DatePipe],
 })
 export class TimerComponent implements OnInit {
-  timeLeft = 25 * 60 * 1000;
+  timeStart = 25 * 60 * 1000;
+  timeLeft = this.timeStart;
   timerState = TimerState.Stopped;
   selectedPhase: 'work' | 'short break' | 'long break' =
     'work';
@@ -67,17 +68,20 @@ export class TimerComponent implements OnInit {
 
   onWorkButtonClick(): void {
     this.selectedPhase = 'work';
-    this.timerService.setTimer(25 * 60 * 1000);
+    this.timeStart = 25 * 60 * 1000;
+    this.timerService.setTimer(this.timeStart);
   }
 
   onShortBreakButtonClick(): void {
     this.selectedPhase = 'short break';
-    this.timerService.setTimer(5 * 60 * 1000);
+    this.timeStart = 5 * 60 * 1000;
+    this.timerService.setTimer(this.timeStart);
   }
 
   onLongBreakButtonClick(): void {
     this.selectedPhase = 'long break';
-    this.timerService.setTimer(15 * 60 * 1000);
+    this.timeStart = 15 * 60 * 1000;
+    this.timerService.setTimer(this.timeStart);
   }
 
   onStartPauseButtonClick(): void {

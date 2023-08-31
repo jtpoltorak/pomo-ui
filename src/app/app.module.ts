@@ -22,6 +22,7 @@ import {
   faInfo,
 } from '@fortawesome/free-solid-svg-icons';
 
+import { ProgressBarModule } from 'primeng/progressbar';
 import { SidebarModule } from 'primeng/sidebar';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +43,7 @@ import { SidebarAboutComponent } from './components/sidebar-about.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     FontAwesomeModule,
+    ProgressBarModule,
     SidebarModule,
   ],
   providers: [],

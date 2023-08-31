@@ -56,6 +56,14 @@
       </span>
     </div>
   </div>
+  <div class="w-60">
+    <p-progressBar
+      [color]="'#4b5563'"
+      [style]="{ border: '2px solid #fff' }"
+      [showValue]="false"
+      [value]="((timeStart - timeLeft) / timeStart) * 100"
+    ></p-progressBar>
+  </div>
   <div
     class="flex flex-row items-center justify-center my-3 space-x-2"
   >
@@ -111,8 +119,10 @@
   </div>
 </div>
 <hr class="my-6" />
-<div class="flex flex-row items-center justify-center my-3">
-  &copy; 2023 Paguroidea, inc. / all rights reserved
+<div
+  class="flex flex-row items-center justify-center my-3 text-xs"
+>
+  &copy; 2023 Paguroidea LLC / all rights reserved
 </div>
 
 <app-sidebar-help
