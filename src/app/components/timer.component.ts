@@ -25,8 +25,9 @@ export class TimerComponent implements OnInit {
 
   timerFormat: 'colon' | 'chars' = 'chars';
 
-  showSidebarHelp = false;
-  showSidebarAbout = false;
+  isSidebarVisible = false;
+  currentSidebarComponent: 'help' | 'about' | undefined =
+    undefined;
 
   constructor(
     private timerService: TimerService,
@@ -103,10 +104,12 @@ export class TimerComponent implements OnInit {
   onSettingsButtonClick(): void {}
 
   onHelpButtonClick(): void {
-    this.showSidebarHelp = true;
+    this.isSidebarVisible = true;
+    this.currentSidebarComponent = 'help';
   }
 
   onAboutButtonClick(): void {
-    this.showSidebarAbout = true;
+    this.isSidebarVisible = true;
+    this.currentSidebarComponent = 'about';
   }
 }

@@ -28,15 +28,15 @@ import { SidebarModule } from 'primeng/sidebar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TimerComponent } from './components/timer.component';
-import { SidebarHelpComponent } from './components/sidebar-help.component';
-import { SidebarAboutComponent } from './components/sidebar-about.component';
+import { HelpComponent } from './components/help.component';
+import { AboutComponent } from './components/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TimerComponent,
-    SidebarHelpComponent,
-    SidebarAboutComponent,
+    HelpComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
