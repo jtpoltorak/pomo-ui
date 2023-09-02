@@ -1,35 +1,139 @@
 <form
+  class="w-full max-w-s"
   [formGroup]="settingsFormGroup"
   (ngSubmit)="onSubmit()"
 >
-  <div>
-    <label>
-      Time format:<br />
+  <div class="flex flex-col">
+    <!-- time format -->
+    <div>
+      <label
+        for="timeFormat"
+        class="font-bold"
+        >time format:</label
+      >
+    </div>
+    <div class="flex flex-row align-middle">
       <input
         id="timeFormatColon"
         type="radio"
         value="colon"
+        name="timeFormat"
         formControlName="timeFormat"
+        class="relative w-5 h-5 cursor-pointer peer"
       />
-      <label for="timeFormatColon">12:34</label>
+      <label
+        for="timeFormatColon"
+        class="ml-1 cursor-pointer"
+        >12:34</label
+      >
       <input
         id="timeFormatChars"
         type="radio"
         value="chars"
+        name="timeFormat"
         formControlName="timeFormat"
+        class="relative w-5 h-5 ml-2 cursor-pointer peer"
       />
-      <label for="timeFormatChars">12m34s</label>
-    </label>
-  </div>
-  <div>
-    <label>
-      Show progress bar:
+      <label
+        for="timeFormatChars"
+        class="ml-1 cursor-pointer"
+        >12m34s</label
+      >
+    </div>
+    <!-- show progress bar-->
+    <div class="mt-4">
+      <label
+        for="showProgressBar"
+        class="font-bold"
+      >
+        show progress bar:
+      </label>
+    </div>
+    <div>
       <input
         id="showProgressBar"
         type="checkbox"
         formControlName="showProgressBar"
+        class="cursor-pointer"
       />
-    </label>
+    </div>
+    <!-- work duration-->
+    <div class="mt-4">
+      <label
+        for="workDuration"
+        class="font-bold"
+      >
+        work duration:
+      </label>
+    </div>
+    <div>
+      <input
+        id="workDuration"
+        type="number"
+        formControlName="workDuration"
+        class="w-20 h-8"
+      />
+      minutes
+    </div>
+    <!-- short break duration-->
+    <div class="mt-4">
+      <label
+        for="shortBreakDuration"
+        class="font-bold"
+      >
+        short break duration:
+      </label>
+    </div>
+    <div>
+      <input
+        id="shortBreakDuration"
+        type="number"
+        formControlName="shortBreakDuration"
+        class="w-20 h-8"
+      />
+      minutes
+    </div>
+    <!-- long break duration-->
+    <div class="mt-4">
+      <label
+        for="longBreakDuration"
+        class="font-bold"
+      >
+        long break duration:
+      </label>
+    </div>
+    <div>
+      <input
+        id="longBreakDuration"
+        type="number"
+        formControlName="longBreakDuration"
+        class="w-20 h-8"
+      />
+      minutes
+    </div>
+    <!-- buttons -->
+    <p-divider></p-divider>
+    <div class="flex flex-row justify-end space-x-2">
+      <button
+        type="button"
+        class="btn-secondary"
+        (click)="onRestoreButtonClick()"
+      >
+        restore
+      </button>
+      <button
+        type="button"
+        class="btn-secondary"
+        (click)="onCancelButtonClick()"
+      >
+        cancel
+      </button>
+      <button
+        type="submit"
+        class="btn-primary"
+      >
+        save
+      </button>
+    </div>
   </div>
-  <button type="submit">Save</button>
 </form>

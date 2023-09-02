@@ -45,31 +45,38 @@
 
 /* Repeated TailwindCSS utility patterns */
 @layer components {
-  .btn-primary {
+  .btn-timer-primary {
     /*@apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;*/
     @apply px-4 py-1 text-lg text-gray-800 rounded-lg border-2 border-white hover:text-white hover:bg-gray-600 hover:border-transparent focus:outline-none shadow-md;
     /* @apply rounded-l-lg border border-gray-200 bg-white text-sm font-medium px-4 py-2 text-gray-900; */
   }
 
-  .btn-group-primary-left {
+  .btn-timer-group-primary-left {
     @apply px-4 py-1 text-lg text-gray-800 rounded-l-lg border-2 border-white hover:text-white hover:bg-gray-600 hover:border-transparent shadow-md;
   }
-  .btn-group-primary-left-clicked {
+  .btn-timer-group-primary-left-clicked {
     @apply px-4 py-1 text-lg rounded-l-lg border-2 text-white bg-gray-600 border-transparent shadow-md;
   }
 
-  .btn-group-primary-middle {
+  .btn-timer-group-primary-middle {
     @apply px-4 py-1 text-lg text-gray-800 border-2 border-white hover:text-white hover:bg-gray-600 hover:border-transparent shadow-md;
   }
-  .btn-group-primary-middle-clicked {
+  .btn-timer-group-primary-middle-clicked {
     @apply px-4 py-1 text-lg border-2 text-white bg-gray-600 border-transparent shadow-md;
   }
 
-  .btn-group-primary-right {
+  .btn-timer-group-primary-right {
     @apply px-4 py-1 text-lg text-gray-800 rounded-r-lg border-2 border-white hover:text-white hover:bg-gray-600 hover:border-transparent shadow-md;
   }
-  .btn-group-primary-right-clicked {
+  .btn-timer-group-primary-right-clicked {
     @apply px-4 py-1 text-lg rounded-r-lg border-2 text-white bg-gray-600 border-transparent shadow-md;
+  }
+
+  .btn-primary {
+    @apply px-2 py-1 text-white rounded-md border-2 bg-gray-600 border-gray-400 hover:text-white hover:bg-gray-800 hover:border-transparent focus:outline-none shadow-md;
+  }
+  .btn-secondary {
+    @apply px-2 py-1 text-gray-600 rounded-md border-2 bg-white border-gray-400 hover:text-white hover:bg-gray-800 hover:border-transparent focus:outline-none shadow-md whitespace-nowrap;
   }
 }
 
@@ -98,8 +105,36 @@
       -4px 4px 4px #fff,
       4px 4px 4px #fff;
   }
+
+  .element-outline-1 {
+    color: white;
+    box-shadow:
+      -1px -1px 1px #fff,
+      1px -1px 1px #fff,
+      -1px 1px 1px #fff,
+      1px 1px 1px #fff;
+  }
+  .element-outline-2 {
+    color: white;
+    box-shadow:
+      -2px -2px 2px #fff,
+      2px -2px 2px #fff,
+      -2px 2px 2px #fff,
+      2px 2px 2px #fff;
+  }
+  .element-outline-4 {
+    color: white;
+    box-shadow:
+      -4px -4px 4px #fff,
+      4px -4px 4px #fff,
+      -4px 4px 4px #fff,
+      4px 4px 4px #fff;
+  }
 }
 
 .p-sidebar-footer {
   display: none;
+}
+.p-tooltip .p-tooltip-text {
+  font-family: 'comfortaa';
 }

@@ -6,8 +6,8 @@
       type="button"
       [ngClass]="
         selectedPhase === 'work'
-          ? 'btn-group-primary-left-clicked'
-          : 'btn-group-primary-left'
+          ? 'btn-timer-group-primary-left-clicked'
+          : 'btn-timer-group-primary-left'
       "
       (click)="onWorkButtonClick()"
     >
@@ -17,8 +17,8 @@
       type="button"
       [ngClass]="
         selectedPhase === 'short break'
-          ? 'btn-group-primary-middle-clicked'
-          : 'btn-group-primary-middle'
+          ? 'btn-timer-group-primary-middle-clicked'
+          : 'btn-timer-group-primary-middle'
       "
       (click)="onShortBreakButtonClick()"
     >
@@ -28,8 +28,8 @@
       type="button"
       [ngClass]="
         selectedPhase === 'long break'
-          ? 'btn-group-primary-right-clicked'
-          : 'btn-group-primary-right'
+          ? 'btn-timer-group-primary-right-clicked'
+          : 'btn-timer-group-primary-right'
       "
       (click)="onLongBreakButtonClick()"
     >
@@ -58,13 +58,18 @@
   </div>
   <div
     *ngIf="showProgressBar"
-    class="w-60"
+    class="my-3 w-60"
   >
     <p-progressBar
-      [color]="'#4b5563'"
-      [style]="{ border: '2px solid #fff' }"
+      [color]="'rgb(31 41 55)'"
+      [styleClass]="'element-outline-2'"
       [showValue]="false"
-      [value]="((timeStart - timeLeft) / timeStart) * 100"
+      [value]="(timeLeft / timeStart) * 100"
+      [ngClass]="
+        timerState === timerStates.Paused
+          ? 'animate-pulse'
+          : 'animate-none'
+      "
     ></p-progressBar>
   </div>
   <div
@@ -72,14 +77,14 @@
   >
     <button
       type="button"
-      class="w-24 btn-primary"
+      class="w-24 btn-timer-primary"
       (click)="onStartPauseButtonClick()"
     >
       {{ startPauseButtonText }}
     </button>
     <button
       type="button"
-      class="w-24 btn-primary"
+      class="w-24 btn-timer-primary"
       (click)="onResetButtonClick()"
     >
       reset
@@ -108,8 +113,11 @@
     </button>
     <button
       type="button"
+      pTooltip="click to view help"
+      [showDelay]="500"
+      [hideDelay]="250"
+      tooltipPosition="bottom"
       (click)="onHelpButtonClick()"
-      data-hs-overlay="#hs-overlay-right"
     >
       <fa-icon [icon]="['fas', 'question']"></fa-icon>
     </button>
@@ -120,12 +128,6 @@
       <fa-icon [icon]="['fas', 'info']"></fa-icon>
     </button>
   </div>
-</div>
-<hr class="my-6" />
-<div
-  class="flex flex-row items-center justify-center my-3 text-xs"
->
-  &copy; 2023 Paguroidea LLC / all rights reserved
 </div>
 
 <p-sidebar
@@ -152,7 +154,9 @@
       <app-settings
         *ngSwitchCase="'settings'"
         [settings]="settings"
-        (settingsChange)="onSettingsChange($event)"
+        (settingsRestore)="onSettingsRestore()"
+        (settingsCancel)="onSettingsCancel()"
+        (settingsSave)="onSettingsSave($event)"
       ></app-settings>
       <app-help *ngSwitchCase="'help'"></app-help>
       <app-about *ngSwitchCase="'about'"></app-about>

@@ -25,13 +25,18 @@ import {
 
 import { ProgressBarModule } from 'primeng/progressbar';
 import { SidebarModule } from 'primeng/sidebar';
+import { DividerModule } from 'primeng/divider';
+import { TooltipModule } from 'primeng/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TimerComponent } from './components/timer.component';
 import { SettingsComponent } from './components/settings.component';
 import { HelpComponent } from './components/help.component';
+import { FooterComponent } from './components/footer.component';
 import { AboutComponent } from './components/about.component';
+import { PrivacyComponent } from './components/privacy.component';
+import { ContactComponent } from './components/contact.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,10 @@ import { AboutComponent } from './components/about.component';
     TimerComponent,
     SettingsComponent,
     HelpComponent,
+    FooterComponent,
     AboutComponent,
+    PrivacyComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +57,8 @@ import { AboutComponent } from './components/about.component';
     FontAwesomeModule,
     ProgressBarModule,
     SidebarModule,
+    DividerModule,
+    TooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

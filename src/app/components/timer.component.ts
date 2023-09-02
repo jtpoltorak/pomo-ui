@@ -18,8 +18,10 @@ export class TimerComponent implements OnInit {
   readonly defaultSettings: Settings = {
     timeFormat: 'chars',
     showProgressBar: true,
+    workDurationMS: 25 * 60 * 1000,
+    shortBreakDurationMS: 5 * 60 * 1000,
+    longBreakDurationMS: 15 * 60 * 1000,
   };
-
   timeStart = 25 * 60 * 1000;
   timeLeft = this.timeStart;
   timerState = TimerState.Stopped;
@@ -54,6 +56,7 @@ export class TimerComponent implements OnInit {
     );
     if (!this.settings) {
       this.settings = this.defaultSettings;
+      this.settingsService.saveSettings(this.settings);
     }
     this.timerService.setTimer(this.timeLeft);
     this.timeLeftSubscription =
@@ -90,19 +93,25 @@ export class TimerComponent implements OnInit {
 
   onWorkButtonClick(): void {
     this.selectedPhase = 'work';
-    this.timeStart = 25 * 60 * 1000;
+    this.timeStart = this.settings?.workDurationMS
+      ? this.settings.workDurationMS
+      : 25 * 60 * 1000;
     this.timerService.setTimer(this.timeStart);
   }
 
   onShortBreakButtonClick(): void {
     this.selectedPhase = 'short break';
-    this.timeStart = 5 * 60 * 1000;
+    this.timeStart = this.settings?.shortBreakDurationMS
+      ? this.settings.shortBreakDurationMS
+      : 5 * 60 * 1000;
     this.timerService.setTimer(this.timeStart);
   }
 
   onLongBreakButtonClick(): void {
     this.selectedPhase = 'long break';
-    this.timeStart = 15 * 60 * 1000;
+    this.timeStart = this.settings?.longBreakDurationMS
+      ? this.settings.longBreakDurationMS
+      : 15 * 60 * 1000;
     this.timerService.setTimer(this.timeStart);
   }
 
@@ -123,25 +132,55 @@ export class TimerComponent implements OnInit {
   onAutoplayButtonClick(): void {}
 
   onSettingsButtonClick(): void {
+    this.timerService.pauseTimer();
     this.isSidebarVisible = true;
     this.currentSidebarComponent = 'settings';
   }
 
   onHelpButtonClick(): void {
+    this.timerService.pauseTimer();
     this.isSidebarVisible = true;
     this.currentSidebarComponent = 'help';
   }
 
   onAboutButtonClick(): void {
+    this.timerService.pauseTimer();
     this.isSidebarVisible = true;
     this.currentSidebarComponent = 'about';
   }
 
-  onSettingsChange(newSettings: Settings): void {
+  onSettingsRestore(): void {
+    this.onSettingsSave(this.defaultSettings);
+  }
+
+  onSettingsCancel(): void {
+    this.isSidebarVisible = false;
+    this.timerService.startTimer();
+  }
+
+  onSettingsSave(newSettings: Settings): void {
     this.isSidebarVisible = false;
     this.settings = newSettings;
     this.timerFormat = this.settings.timeFormat;
     this.showProgressBar = this.settings.showProgressBar;
+    switch (this.selectedPhase) {
+      case 'work': {
+        this.onWorkButtonClick();
+        break;
+      }
+      case 'short break': {
+        this.onShortBreakButtonClick();
+        break;
+      }
+      case 'long break': {
+        this.onLongBreakButtonClick();
+        break;
+      }
+      default: {
+        this.onWorkButtonClick();
+      }
+    }
+    this.timerService.resetTimer();
     this.settingsService.saveSettings(newSettings);
   }
 }

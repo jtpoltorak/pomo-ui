@@ -1,0 +1,54 @@
+<p>
+  If you have any questions, issues, or feature ideas
+  concerning pomo, please share them with me!
+</p>
+<form
+  class="w-full max-w-s"
+  [formGroup]="contactFormGroup"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="flex flex-col">
+    <div class="mt-2">
+      <label
+        for="email"
+        class="font-bold"
+      >
+        your email:
+      </label>
+    </div>
+    <div>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="h-8 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none resize-none w-72 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+        placeholder="your.email@somewhere.com"
+      />
+    </div>
+    <div class="mt-4">
+      <label
+        for="message"
+        class="font-bold"
+      >
+        your message:
+      </label>
+    </div>
+    <div>
+      <textarea
+        id="message"
+        formControlName="message"
+        class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-white border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+        placeholder="Your message here..."
+      >
+      </textarea>
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="mt-4 btn-primary"
+      >
+        send
+      </button>
+    </div>
+  </div>
+</form>

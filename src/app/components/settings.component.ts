@@ -20,7 +20,11 @@ import { Settings } from '../models/settings.model';
 })
 export class SettingsComponent implements OnChanges {
   @Input() settings: Settings | undefined = undefined;
-  @Output() settingsChange: EventEmitter<Settings> =
+  @Output() settingsRestore: EventEmitter<null> =
+    new EventEmitter<null>();
+  @Output() settingsCancel: EventEmitter<null> =
+    new EventEmitter<null>();
+  @Output() settingsSave: EventEmitter<Settings> =
     new EventEmitter<Settings>();
 
   settingsFormGroup: FormGroup;
@@ -29,6 +33,9 @@ export class SettingsComponent implements OnChanges {
     this.settingsFormGroup = this.formBuilder.group({
       timeFormat: new FormControl('colon'),
       showProgressBar: new FormControl(false),
+      workDuration: new FormControl(),
+      shortBreakDuration: new FormControl(),
+      longBreakDuration: new FormControl(),
     });
   }
 
@@ -45,10 +52,33 @@ export class SettingsComponent implements OnChanges {
       this.settingsFormGroup.controls[
         'showProgressBar'
       ].setValue(this.settings.showProgressBar);
+      this.settingsFormGroup.controls[
+        'workDuration'
+      ].setValue(
+        this.settings.workDurationMS / (60 * 1000),
+      );
+      this.settingsFormGroup.controls[
+        'shortBreakDuration'
+      ].setValue(
+        this.settings.shortBreakDurationMS / (60 * 1000),
+      );
+      this.settingsFormGroup.controls[
+        'longBreakDuration'
+      ].setValue(
+        this.settings.longBreakDurationMS / (60 * 1000),
+      );
     }
   }
 
-  onSubmit() {
+  onRestoreButtonClick(): void {
+    this.settingsRestore.emit();
+  }
+
+  onCancelButtonClick(): void {
+    this.settingsCancel.emit();
+  }
+
+  onSubmit(): boolean {
     if (!this.settingsFormGroup.valid) {
       return false;
     } else {
@@ -59,8 +89,25 @@ export class SettingsComponent implements OnChanges {
         showProgressBar:
           this.settingsFormGroup.controls['showProgressBar']
             .value,
+        workDurationMS:
+          this.settingsFormGroup.controls['workDuration']
+            .value *
+          60 *
+          1000,
+        shortBreakDurationMS:
+          this.settingsFormGroup.controls[
+            'shortBreakDuration'
+          ].value *
+          60 *
+          1000,
+        longBreakDurationMS:
+          this.settingsFormGroup.controls[
+            'longBreakDuration'
+          ].value *
+          60 *
+          1000,
       } as Settings;
-      this.settingsChange.emit(this.settings);
+      this.settingsSave.emit(this.settings);
       return true;
     }
   }
