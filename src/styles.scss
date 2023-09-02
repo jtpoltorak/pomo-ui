@@ -52,24 +52,24 @@
   }
 
   .btn-timer-group-primary-left {
-    @apply px-4 py-1 text-lg text-gray-800 rounded-l-lg border-2 border-white hover:text-white hover:bg-gray-600 hover:border-transparent shadow-md;
+    @apply px-2 py-1 text-lg text-gray-800 rounded-l-lg border-2 border-white hover:text-white hover:bg-gray-600 hover:border-transparent shadow-md;
   }
   .btn-timer-group-primary-left-clicked {
-    @apply px-4 py-1 text-lg rounded-l-lg border-2 text-white bg-gray-600 border-transparent shadow-md;
+    @apply px-2 py-1 text-lg rounded-l-lg border-2 text-white bg-gray-600 border-transparent shadow-md;
   }
 
   .btn-timer-group-primary-middle {
-    @apply px-4 py-1 text-lg text-gray-800 border-2 border-white hover:text-white hover:bg-gray-600 hover:border-transparent shadow-md;
+    @apply px-2 py-1 text-lg text-gray-800 border-2 border-white hover:text-white hover:bg-gray-600 hover:border-transparent shadow-md;
   }
   .btn-timer-group-primary-middle-clicked {
-    @apply px-4 py-1 text-lg border-2 text-white bg-gray-600 border-transparent shadow-md;
+    @apply px-2 py-1 text-lg border-2 text-white bg-gray-600 border-transparent shadow-md;
   }
 
   .btn-timer-group-primary-right {
-    @apply px-4 py-1 text-lg text-gray-800 rounded-r-lg border-2 border-white hover:text-white hover:bg-gray-600 hover:border-transparent shadow-md;
+    @apply px-2 py-1 text-lg text-gray-800 rounded-r-lg border-2 border-white hover:text-white hover:bg-gray-600 hover:border-transparent shadow-md;
   }
   .btn-timer-group-primary-right-clicked {
-    @apply px-4 py-1 text-lg rounded-r-lg border-2 text-white bg-gray-600 border-transparent shadow-md;
+    @apply px-2 py-1 text-lg rounded-r-lg border-2 text-white bg-gray-600 border-transparent shadow-md;
   }
 
   .btn-primary {
