@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "clean": "rm -f package-lock.json && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -f package-lock.json && rm -rf node_modules && rm -rf dist",
+    "start-pwa": "ng build --prod && http-server -p 8080 -c-1 dist/pomo-ui"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +20,7 @@
     "@angular/platform-browser": "^16.2.3",
     "@angular/platform-browser-dynamic": "^16.2.3",
     "@angular/router": "^16.2.3",
+    "@angular/service-worker": "^16.2.3",
     "@fortawesome/angular-fontawesome": "^0.13.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
