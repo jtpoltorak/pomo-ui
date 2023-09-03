@@ -21,6 +21,9 @@ import {
   faSliders,
   faQuestion,
   faInfo,
+  faArrowUpRightFromSquare,
+  faHeartCircleCheck,
+  faFaceSmileWink,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { ProgressBarModule } from 'primeng/progressbar';
@@ -72,6 +75,9 @@ export class AppModule {
       faSliders,
       faQuestion,
       faInfo,
+      faArrowUpRightFromSquare,
+      faHeartCircleCheck,
+      faFaceSmileWink,
     );
   }
 }
