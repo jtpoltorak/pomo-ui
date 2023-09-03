@@ -42,7 +42,7 @@
   p-sidebar-lg
   [(visible)]="isSidebarVisible"
   position="bottom"
-  styleClass="p-sidebar-lg bg-white p-2 text-black text-base"
+  styleClass="p-sidebar-lg bg-white p-2 text-black"
   [modal]="true"
   [showCloseIcon]="true"
   [autoZIndex]="true"
@@ -60,9 +60,18 @@
   </ng-template>
   <ng-template pTemplate="content">
     <div [ngSwitch]="currentSidebarComponent">
-      <app-about *ngSwitchCase="'about'"></app-about>
-      <app-privacy *ngSwitchCase="'privacy'"></app-privacy>
-      <app-contact *ngSwitchCase="'contact'"></app-contact>
+      <app-about
+        *ngSwitchCase="'about'"
+        class="text-base"
+      ></app-about>
+      <app-privacy
+        *ngSwitchCase="'privacy'"
+        class="text-base"
+      ></app-privacy>
+      <app-contact
+        *ngSwitchCase="'contact'"
+        class="text-base"
+      ></app-contact>
     </div>
   </ng-template>
 </p-sidebar>
