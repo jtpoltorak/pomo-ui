@@ -60,18 +60,9 @@
   </ng-template>
   <ng-template pTemplate="content">
     <div [ngSwitch]="currentSidebarComponent">
-      <app-about
-        *ngSwitchCase="'about'"
-        class="text-base"
-      ></app-about>
-      <app-privacy
-        *ngSwitchCase="'privacy'"
-        class="text-base"
-      ></app-privacy>
-      <app-contact
-        *ngSwitchCase="'contact'"
-        class="text-base"
-      ></app-contact>
+      <app-about *ngSwitchCase="'about'"></app-about>
+      <app-privacy *ngSwitchCase="'privacy'"></app-privacy>
+      <app-contact *ngSwitchCase="'contact'"></app-contact>
     </div>
   </ng-template>
 </p-sidebar>
