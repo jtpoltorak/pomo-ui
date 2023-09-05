@@ -10,12 +10,34 @@
     <h1
       class="font-extrabold text-center text-gray-800 text-7xl font-outline-4"
     >
-      pomox
+      pomod
     </h1>
     <h2 class="my-3 text-xl text-center text-gray-800">
       a simple pomodoro timer
     </h2>
     <app-timer></app-timer>
     <app-footer></app-footer>
+    <button (click)="onPWAClick()">message</button>
+    <p-toast
+      key="pwaToast"
+      position="top-center"
+      [baseZIndex]="5000"
+      [style]="{ backgroundColor: 'yellow' }"
+    >
+      <ng-template
+        let-message
+        pTemplate="message"
+      >
+        <p class="font-sans text-sm text-black">
+          An update is available - click
+          <a
+            (click)="doPWAUpdate()"
+            class="text-blue-600 hover:cursor-pointer hover:underline hover:text-blue-800"
+            >here</a
+          >
+          to install.
+        </p>
+      </ng-template>
+    </p-toast>
   </div>
 </div>
