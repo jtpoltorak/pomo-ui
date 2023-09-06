@@ -9,6 +9,8 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  showInfoDialog = false;
+
   constructor(
     private pwaService: PWAService,
     private messageService: MessageService,

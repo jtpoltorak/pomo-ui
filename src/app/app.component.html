@@ -17,27 +17,36 @@
     </h2>
     <app-timer></app-timer>
     <app-footer></app-footer>
-    <button (click)="onPWAClick()">message</button>
-    <p-toast
-      key="pwaToast"
-      position="top-center"
-      [baseZIndex]="5000"
-      [style]="{ backgroundColor: 'yellow' }"
+
+    <button
+      type="button"
+      (click)="showInfoDialog = true"
+      icon="pi pi-external-link"
+      label="Show"
     >
-      <ng-template
-        let-message
-        pTemplate="message"
-      >
-        <p class="font-sans text-sm text-black">
-          An update is available - click
-          <a
-            (click)="doPWAUpdate()"
-            class="text-blue-600 hover:cursor-pointer hover:underline hover:text-blue-800"
-            >here</a
-          >
-          to install.
-        </p>
+      Open
+    </button>
+    <p-dialog
+      header="Header"
+      [(visible)]="showInfoDialog"
+      [modal]="true"
+      [style]="{ width: '20vw' }"
+      [position]="'center'"
+    >
+      <ng-template pTemplate="header">
+        <span class="font-bold">Heads up!</span>
       </ng-template>
-    </p-toast>
+      <p>An update is availabe.</p>
+      <ng-template pTemplate="footer">
+        <button
+          icon="pi pi-check"
+          (click)="showInfoDialog = false"
+          label="Ok"
+          styleClass="p-button-text"
+        >
+          Install
+        </button>
+      </ng-template>
+    </p-dialog>
   </div>
 </div>

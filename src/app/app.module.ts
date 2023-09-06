@@ -31,6 +31,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { DividerModule } from 'primeng/divider';
 import { TooltipModule } from 'primeng/tooltip';
 import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
 
 import { MessageService } from 'primeng/api';
 
@@ -67,6 +68,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     DividerModule,
     TooltipModule,
     ToastModule,
+    DialogModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

@@ -138,3 +138,24 @@
 .p-tooltip .p-tooltip-text {
   font-family: 'comfortaa';
 }
+
+.p-dialog {
+  margin: 8px !important;
+}
+
+.p-dialog .p-dialog-header,
+.p-dialog-content {
+  font-family: 'comfortaa';
+  padding: 8px 16px !important;
+}
+
+/* .p-toast .p-toast-message .p-toast-message-content {
+  padding: 8px !important;
+  background-color: yellow;
+  border: none;
+}
+
+.p-toast-icon-close-icon {
+  width: 14px;
+  height: 14px;
+} */
