@@ -10,12 +10,68 @@
     <h1
       class="font-extrabold text-center text-gray-800 text-7xl font-outline-4"
     >
-      pomox
+      pomod
     </h1>
     <h2 class="my-3 text-xl text-center text-gray-800">
       a simple pomodoro timer
     </h2>
     <app-timer></app-timer>
     <app-footer></app-footer>
+
+    <button
+      type="button"
+      (click)="tempShowConfirm()"
+    >
+      Temp Show Confirm Dialog
+    </button>
+
+    
+    <p-confirmDialog
+      #cd
+      key="pwaUpdateConfirm"
+      position="top"
+      [style]="{width: '20vw'}">
+      <ng-template pTemplate="footer">
+          <button type="button" class="'btn-secondary'" (click)="cd.reject()">Later...</button>
+          <button type="button" class="btn-primary" (click)="cd.accept()">Update now!</button>
+      </ng-template>
+    </p-confirmDialog>
+
+<!-- 
+    <button
+      type="button"
+      (click)="showInfoDialog = true"
+    >
+      Modal Test...
+    </button>
+    <p-dialog
+      header="Header"
+      [(visible)]="showInfoDialog"
+      [modal]="true"
+      [style]="{ width: '20vw' }"
+      [position]="'center'"
+    >
+      <ng-template pTemplate="header">
+        <span class="font-bold">Heads up!</span>
+      </ng-template>
+      <p>An update is availabe.</p>
+      <ng-template pTemplate="footer">
+        <button
+          type="button"
+          class="btn-secondary"
+          (click)="showInfoDialog = false"
+        >
+          Not now
+        </button>
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="showInfoDialog = false"
+        >
+          Install
+        </button>
+      </ng-template>
+    </p-dialog>
+     -->
   </div>
 </div>

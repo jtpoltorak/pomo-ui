@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "clean": "rm -f package-lock.json && rm -rf node_modules && rm -rf dist",
-    "start-pwa": "ng build --prod && http-server -p 8080 -c-1 dist/pomo-ui"
+    "start-pwa": "ng build && http-server -p 8080 -c-1 dist/pomo-ui"
   },
   "private": true,
   "dependencies": {
