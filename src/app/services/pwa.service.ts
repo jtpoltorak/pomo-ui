@@ -7,7 +7,7 @@ import {
 import { concat, interval, filter } from 'rxjs';
 import { first } from 'rxjs/operators';
 
-import { MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class PWAService {
   constructor(
     private swUpdate: SwUpdate,
     private applicationRef: ApplicationRef,
-    private messageService: MessageService,
+    private confirmationService: ConfirmationService,
   ) {}
 
   checkForUpdates(): void {
@@ -37,12 +37,11 @@ export class PWAService {
           const updateFound =
             await this.swUpdate.checkForUpdate();
           if (updateFound) {
-            this.messageService.add({
-              key: 'pwaToast',
-              severity: 'info',
-              // summary: 'Update Available',
-              // detail: 'Message Content',
-              sticky: true,
+            this.confirmationService.confirm({
+              key: 'pwaUpdateConfirm',
+              header: 'Heads Up!',
+              icon: 'pi pi-info-circle',
+              message: 'A new update is available.'
             });
           } else {
             console.log(
@@ -65,7 +64,7 @@ export class PWAService {
     //       .subscribe(evt => {
     //         if (promptUser(evt)) {
     //           // Reload the page to update to the latest version.
-    this.messageService.clear('pwaToast');
+    this.confirmationService.close();
     document.location.reload();
     //   }
     // });

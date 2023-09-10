@@ -73,10 +73,10 @@
   }
 
   .btn-primary {
-    @apply px-2 py-1 text-white rounded-md border-2 bg-gray-600 border-gray-400 hover:text-white hover:bg-gray-800 hover:border-transparent focus:outline-none shadow-md;
+    @apply font-sans px-2 py-1 text-white rounded-md border-2 bg-gray-600 border-gray-400 hover:text-white hover:bg-gray-800 hover:border-transparent focus:outline-none shadow-md;
   }
   .btn-secondary {
-    @apply px-2 py-1 text-gray-600 rounded-md border-2 bg-white border-gray-400 hover:text-white hover:bg-gray-800 hover:border-transparent focus:outline-none shadow-md whitespace-nowrap;
+    @apply font-sans px-2 py-1 text-gray-600 rounded-md border-2 bg-white border-gray-400 hover:text-white hover:bg-gray-800 hover:border-transparent focus:outline-none shadow-md whitespace-nowrap;
   }
 }
 

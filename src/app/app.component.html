@@ -20,11 +20,29 @@
 
     <button
       type="button"
-      (click)="showInfoDialog = true"
-      icon="pi pi-external-link"
-      label="Show"
+      (click)="tempShowConfirm()"
     >
-      Open
+      Temp Show Confirm Dialog
+    </button>
+
+    
+    <p-confirmDialog
+      #cd
+      key="pwaUpdateConfirm"
+      position="top"
+      [style]="{width: '20vw'}">
+      <ng-template pTemplate="footer">
+          <button type="button" class="'btn-secondary'" (click)="cd.reject()">Later...</button>
+          <button type="button" class="btn-primary" (click)="cd.accept()">Update now!</button>
+      </ng-template>
+    </p-confirmDialog>
+
+<!-- 
+    <button
+      type="button"
+      (click)="showInfoDialog = true"
+    >
+      Modal Test...
     </button>
     <p-dialog
       header="Header"
@@ -39,14 +57,21 @@
       <p>An update is availabe.</p>
       <ng-template pTemplate="footer">
         <button
-          icon="pi pi-check"
+          type="button"
+          class="btn-secondary"
           (click)="showInfoDialog = false"
-          label="Ok"
-          styleClass="p-button-text"
+        >
+          Not now
+        </button>
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="showInfoDialog = false"
         >
           Install
         </button>
       </ng-template>
     </p-dialog>
+     -->
   </div>
 </div>

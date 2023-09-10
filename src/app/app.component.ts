@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PWAService } from './services/pwa.service';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -13,18 +13,30 @@ export class AppComponent implements OnInit {
 
   constructor(
     private pwaService: PWAService,
-    private messageService: MessageService,
+    private confirmationService: ConfirmationService,
   ) {
     this.pwaService.checkForUpdates();
   }
 
   ngOnInit(): void {}
 
-  onPWAClick(): void {
-    this.messageService.add({
-      key: 'pwaToast',
-      severity: 'info',
-      sticky: true,
+  // onPWAClick(): void {
+  //   this.messageService.add({
+  //     key: 'pwaToast',
+  //     severity: 'info',
+  //     sticky: true,
+  //   });
+  // }
+
+  tempShowConfirm(): void {
+    this.confirmationService.confirm({
+      key: 'pwaUpdateConfirm',
+      header: 'Heads Up!',
+      icon: 'pi pi-info-circle',
+      message: 'A new update is available.',
+      accept: () => {
+        console.log('accepted!');
+      }
     });
   }
 
