@@ -4,19 +4,23 @@
   <!-- <div
   class="flex flex-col items-center justify-center w-screen h-screen bg-[url('./assets/images/bg1.jpg')] bg-cover"
 > -->
-  <div
-    class="flex flex-col justify-center p-4 align-middle"
-  >
+  <div class="flex flex-col justify-center p-4 align-middle">
     <h1
-      class="font-extrabold text-center text-gray-800 text-7xl font-outline-4"
+      class="font-extrabold text-center text-gray-800 text-7xl font-outline-4 animate-fade-right animate-once animate-ease-linear animate-duration-1000"
     >
       pomod
     </h1>
-    <h2 class="my-3 text-xl text-center text-gray-800">
+    <h2
+      class="my-3 text-xl text-center text-gray-800 animate-fade-left animate-once animate-ease-linear animate-duration-1000 animate-delay-1000"
+    >
       a simple pomodoro timer
     </h2>
-    <app-timer></app-timer>
-    <app-footer></app-footer>
+    <div
+      class="animate-fade-up animate-once animate-ease-linear animate-duration-1000 animate-delay-[2000ms]"
+    >
+      <app-timer></app-timer>
+      <app-footer></app-footer>
+    </div>
   </div>
 </div>
 
