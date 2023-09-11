@@ -1,7 +1,5 @@
 <div class="flex flex-col items-center justify-center">
-  <div
-    class="flex flex-row items-center justify-center my-3"
-  >
+  <div class="flex flex-row items-center justify-center my-3">
     <button
       type="button"
       [ngClass]="
@@ -145,6 +143,7 @@
   [showCloseIcon]="true"
   [autoZIndex]="true"
   [baseZIndex]="99999"
+  appendTo="body"
 >
   <ng-template pTemplate="header">
     <h2
