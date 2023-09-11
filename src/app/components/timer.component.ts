@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+import { DatePipe, DOCUMENT } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
 import { Subscription } from 'rxjs';
@@ -34,6 +34,8 @@ export class TimerComponent implements OnInit {
   private timerStateSubscription: Subscription;
 
   timerFormat: 'colon' | 'chars' = 'chars';
+  fullScreen = false;
+  docElement: any;
   showProgressBar = true;
 
   isSidebarVisible = false;
@@ -48,6 +50,7 @@ export class TimerComponent implements OnInit {
     private timerService: TimerService,
     private titleService: Title,
     private datePipe: DatePipe,
+    @Inject(DOCUMENT) private document: any,
   ) {
     this.settings = this.settingsService.getSettings();
     console.log(
@@ -84,7 +87,9 @@ export class TimerComponent implements OnInit {
       );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.docElement = this.document.documentElement;
+  }
 
   ngOnDestroy() {
     this.timeLeftSubscription.unsubscribe();
@@ -130,6 +135,37 @@ export class TimerComponent implements OnInit {
   onMuteButtonClick(): void {}
 
   onAutoplayButtonClick(): void {}
+
+  onFullScreenToggleButtonClick(): void {
+    this.fullScreen = !this.fullScreen;
+    if (this.fullScreen) {
+      if (this.docElement.requestFullscreen) {
+        this.docElement.requestFullscreen();
+      } else if (this.docElement.mozRequestFullScreen) {
+        /* Firefox */
+        this.docElement.mozRequestFullScreen();
+      } else if (this.docElement.webkitRequestFullscreen) {
+        /* Chrome, Safari and Opera */
+        this.docElement.webkitRequestFullscreen();
+      } else if (this.docElement.msRequestFullscreen) {
+        /* IE/Edge */
+        this.docElement.msRequestFullscreen();
+      }
+    } else {
+      if (this.document.exitFullscreen) {
+        this.document.exitFullscreen();
+      } else if (this.document.mozCancelFullScreen) {
+        /* Firefox */
+        this.document.mozCancelFullScreen();
+      } else if (this.document.webkitExitFullscreen) {
+        /* Chrome, Safari and Opera */
+        this.document.webkitExitFullscreen();
+      } else if (this.document.msExitFullscreen) {
+        /* IE/Edge */
+        this.document.msExitFullscreen();
+      }
+    }
+  }
 
   onSettingsButtonClick(): void {
     this.timerService.pauseTimer();
