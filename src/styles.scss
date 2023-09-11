@@ -146,7 +146,26 @@
 .p-dialog .p-dialog-header,
 .p-dialog-content {
   font-family: 'comfortaa';
-  padding: 8px 16px !important;
+  padding: 8px !important;
+}
+
+.p-dialog .p-dialog-header .p-dialog-title {
+  font-size: 1rem !important;
+  font-weight: bold;
+  margin: 0px 4px !important;
+}
+
+.p-dialog.p-confirm-dialog .p-confirm-dialog-message {
+  margin: 0px !important;
+  margin: 0px 4px !important;
+}
+
+.p-dialog-footer {
+  padding: 8px 8px 16px 8px !important;
+}
+
+.p-toast-message-text {
+  font-family: 'comfortaa';
 }
 
 /* .p-toast .p-toast-message .p-toast-message-content {
