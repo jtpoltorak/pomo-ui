@@ -1,10 +1,7 @@
 import { Injectable, ApplicationRef } from '@angular/core';
-import {
-  SwUpdate,
-  VersionReadyEvent,
-} from '@angular/service-worker';
+import { SwUpdate } from '@angular/service-worker';
 
-import { concat, interval, filter } from 'rxjs';
+import { concat, interval } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 import { ConfirmationService } from 'primeng/api';
@@ -39,14 +36,10 @@ export class PWAService {
           if (updateFound) {
             this.confirmationService.confirm({
               key: 'pwaUpdateConfirm',
-              header: 'Heads Up!',
+              header: 'heads up!',
               icon: 'pi pi-info-circle',
-              message: 'A new update is available.'
+              message: 'a new update is available.',
             });
-          } else {
-            console.log(
-              'You are already on the latest version.',
-            );
           }
         } catch (err) {
           console.error(
@@ -58,15 +51,8 @@ export class PWAService {
     }
   }
 
-  doUpdate(): void {
-    //   this.swUpdate.versionUpdates
-    //       .pipe(filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'))
-    //       .subscribe(evt => {
-    //         if (promptUser(evt)) {
-    //           // Reload the page to update to the latest version.
+  updateApp(): void {
     this.confirmationService.close();
     document.location.reload();
-    //   }
-    // });
   }
 }

@@ -70,6 +70,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     TooltipModule,
     ToastModule,
     DialogModule,
+    ToastModule,
     ConfirmDialogModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
@@ -78,7 +79,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [ConfirmationService],
+  providers: [ConfirmationService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
