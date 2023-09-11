@@ -24,6 +24,8 @@ import {
   faArrowUpRightFromSquare,
   faHeartCircleCheck,
   faFaceSmileWink,
+  faMaximize,
+  faMinimize,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { ProgressBarModule } from 'primeng/progressbar';
@@ -34,7 +36,10 @@ import { ToastModule } from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
-import { ConfirmationService, MessageService } from 'primeng/api';
+import {
+  ConfirmationService,
+  MessageService,
+} from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -94,6 +99,8 @@ export class AppModule {
       faArrowUpRightFromSquare,
       faHeartCircleCheck,
       faFaceSmileWink,
+      faMaximize,
+      faMinimize,
     );
   }
 }

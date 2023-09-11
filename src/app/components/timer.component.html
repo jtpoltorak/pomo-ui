@@ -37,7 +37,7 @@
     </button>
   </div>
   <div
-    class="my-3 font-mono font-bold text-gray-800 text-7xl font-outline-2"
+    class="my-3 font-mono font-bold text-gray-800 text-7xl lg:text-9xl font-outline-2"
     [ngClass]="
       timerState === timerStates.Paused
         ? 'animate-pulse'
@@ -50,9 +50,9 @@
       </span>
       <span *ngSwitchCase="'chars'">
         {{ timeLeft | date: 'mm'
-        }}<span class="text-6xl">m</span
+        }}<span class="text-6xl lg:text-7xl">m</span
         >{{ timeLeft | date: 'ss'
-        }}<span class="text-6xl">s</span>
+        }}<span class="text-6xl lg:text-7xl">s</span>
       </span>
     </div>
   </div>
@@ -104,6 +104,19 @@
       (click)="onAutoplayButtonClick()"
     >
       <fa-icon [icon]="['fas', 'repeat']"></fa-icon>
+    </button>
+    <button
+      type="button"
+      (click)="onFullScreenToggleButtonClick()"
+    >
+      <fa-icon
+        *ngIf="fullScreen"
+        [icon]="['fas', 'minimize']"
+      ></fa-icon>
+      <fa-icon
+        *ngIf="!fullScreen"
+        [icon]="['fas', 'maximize']"
+      ></fa-icon>
     </button>
     <button
       type="button"

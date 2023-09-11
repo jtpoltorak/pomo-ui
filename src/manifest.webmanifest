@@ -1,7 +1,7 @@
 {
   "name": "pomo-ui",
   "short_name": "pomo-ui",
-  "theme_color": "#1976d2",
+  "theme_color": "rgb(25, 118, 210, 0.0)",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
