@@ -1,4 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Inject,
+  OnInit,
+} from '@angular/core';
 import { DatePipe, DOCUMENT } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
@@ -25,8 +30,7 @@ export class TimerComponent implements OnInit {
   timeStart = 25 * 60 * 1000;
   timeLeft = this.timeStart;
   timerState = TimerState.Stopped;
-  selectedPhase: 'work' | 'short break' | 'long break' =
-    'work';
+  selectedPhase: 'work' | 'short break' | 'long break' = 'work';
   startPauseButtonText: 'start' | 'pause' = 'start';
   timerStates = TimerState;
 
@@ -34,7 +38,7 @@ export class TimerComponent implements OnInit {
   private timerStateSubscription: Subscription;
 
   timerFormat: 'colon' | 'chars' = 'chars';
-  fullScreen = false;
+  isFullScreen = false;
   docElement: any;
   showProgressBar = true;
 
@@ -137,8 +141,8 @@ export class TimerComponent implements OnInit {
   onAutoplayButtonClick(): void {}
 
   onFullScreenToggleButtonClick(): void {
-    this.fullScreen = !this.fullScreen;
-    if (this.fullScreen) {
+    this.isFullScreen = !this.isFullScreen;
+    if (this.isFullScreen) {
       if (this.docElement.requestFullscreen) {
         this.docElement.requestFullscreen();
       } else if (this.docElement.mozRequestFullScreen) {
@@ -218,5 +222,19 @@ export class TimerComponent implements OnInit {
     }
     this.timerService.resetTimer();
     this.settingsService.saveSettings(newSettings);
+  }
+
+  @HostListener('document:fullscreenchange', ['$event'])
+  @HostListener('document:webkitfullscreenchange', ['$event'])
+  @HostListener('document:mozfullscreenchange', ['$event'])
+  @HostListener('document:MSFullscreenChange', ['$event'])
+  fullscreenmodes() {
+    if (document.fullscreenElement) {
+      //fullscreen
+      this.isFullScreen = true;
+    } else {
+      //not in full screen
+      this.isFullScreen = false;
+    }
   }
 }

@@ -110,11 +110,11 @@
       (click)="onFullScreenToggleButtonClick()"
     >
       <fa-icon
-        *ngIf="fullScreen"
+        *ngIf="isFullScreen"
         [icon]="['fas', 'minimize']"
       ></fa-icon>
       <fa-icon
-        *ngIf="!fullScreen"
+        *ngIf="!isFullScreen"
         [icon]="['fas', 'maximize']"
       ></fa-icon>
     </button>
