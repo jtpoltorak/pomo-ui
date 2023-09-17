@@ -33,6 +33,7 @@ export class TimerComponent implements OnInit {
   selectedPhase: 'work' | 'short break' | 'long break' = 'work';
   startPauseButtonText: 'start' | 'pause' = 'start';
   timerStates = TimerState;
+  completedPomos = 5;
 
   private timeLeftSubscription: Subscription;
   private timerStateSubscription: Subscription;
@@ -122,6 +123,10 @@ export class TimerComponent implements OnInit {
       ? this.settings.longBreakDurationMS
       : 15 * 60 * 1000;
     this.timerService.setTimer(this.timeStart);
+  }
+
+  onChartClick(): void {
+    // TODO
   }
 
   onStartPauseButtonClick(): void {
