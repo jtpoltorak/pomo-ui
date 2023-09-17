@@ -34,6 +34,32 @@
       long break
     </button>
   </div>
+  <div class="flex flex-row">
+    <div>pomos:</div>
+    <div
+      *ngFor="let _ of [].constructor(completedPomos)"
+      class="ml-1"
+    >
+      <fa-icon
+        *ngIf="!isFullScreen"
+        [icon]="['far', 'circle-dot']"
+      ></fa-icon>
+    </div>
+    <div class="ml-1">|</div>
+    <div class="ml-1">next: short break</div>
+    <div class="ml-1">|</div>
+    <div class="ml-1">
+      <button
+        type="button"
+        (click)="onChartClick()"
+      >
+        <fa-icon
+          *ngIf="!isFullScreen"
+          [icon]="['fas', 'chart-simple']"
+        ></fa-icon>
+      </button>
+    </div>
+  </div>
   <div
     class="my-3 font-mono font-bold text-gray-800 text-7xl lg:text-9xl font-outline-2"
     [ngClass]="

@@ -13,7 +13,10 @@ import {
   faGithub,
   faMedium,
 } from '@fortawesome/free-brands-svg-icons';
-import { faCircle } from '@fortawesome/free-regular-svg-icons';
+import {
+  faCircle,
+  faCircleDot,
+} from '@fortawesome/free-regular-svg-icons';
 import {
   faVolumeLow,
   faVolumeMute,
@@ -26,6 +29,7 @@ import {
   faFaceSmileWink,
   faMaximize,
   faMinimize,
+  faChartSimple,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { ProgressBarModule } from 'primeng/progressbar';
@@ -101,6 +105,8 @@ export class AppModule {
       faFaceSmileWink,
       faMaximize,
       faMinimize,
+      faCircleDot,
+      faChartSimple,
     );
   }
 }
