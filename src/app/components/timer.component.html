@@ -47,18 +47,6 @@
     </div>
     <div class="ml-1">|</div>
     <div class="ml-1">next: short break</div>
-    <div class="ml-1">|</div>
-    <div class="ml-1">
-      <button
-        type="button"
-        (click)="onChartClick()"
-      >
-        <fa-icon
-          *ngIf="!isFullScreen"
-          [icon]="['fas', 'chart-simple']"
-        ></fa-icon>
-      </button>
-    </div>
   </div>
   <div
     class="my-3 font-mono font-bold text-gray-800 text-7xl lg:text-9xl font-outline-2"
@@ -129,6 +117,15 @@
     >
       <fa-icon [icon]="['fas', 'repeat']"></fa-icon>
     </button>
+      <button
+        type="button"
+        (click)="onChartClick()"
+      >
+        <fa-icon
+          *ngIf="!isFullScreen"
+          [icon]="['fas', 'chart-simple']"
+        ></fa-icon>
+      </button>
     <button
       type="button"
       (click)="onFullScreenToggleButtonClick()"
