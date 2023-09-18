@@ -45,6 +45,7 @@ export class TimerComponent implements OnInit {
 
   isSidebarVisible = false;
   currentSidebarComponent:
+    | 'metrics'
     | 'settings'
     | 'help'
     | 'about'
@@ -125,9 +126,9 @@ export class TimerComponent implements OnInit {
     this.timerService.setTimer(this.timeStart);
   }
 
-  onChartClick(): void {
-    // TODO
-  }
+  onBackwardButtonClick(): void {}
+
+  onForwardButtonClick(): void {}
 
   onStartPauseButtonClick(): void {
     if (this.startPauseButtonText === 'start') {
@@ -144,6 +145,11 @@ export class TimerComponent implements OnInit {
   onMuteButtonClick(): void {}
 
   onAutoplayButtonClick(): void {}
+
+  onMetricsClick(): void {
+    this.isSidebarVisible = true;
+    this.currentSidebarComponent = 'metrics';
+  }
 
   onFullScreenToggleButtonClick(): void {
     this.isFullScreen = !this.isFullScreen;

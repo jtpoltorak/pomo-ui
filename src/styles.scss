@@ -78,6 +78,10 @@
   .btn-secondary {
     @apply font-sans px-2 py-1 text-gray-600 rounded-md border-2 bg-white border-gray-400 hover:text-white hover:bg-gray-800 hover:border-transparent focus:outline-none shadow-md whitespace-nowrap;
   }
+
+  .btn-icon {
+    @apply hover:scale-110;
+  }
 }
 
 @layer base {

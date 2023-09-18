@@ -30,6 +30,8 @@ import {
   faMaximize,
   faMinimize,
   faChartSimple,
+  faBackwardStep,
+  faForwardStep,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { ProgressBarModule } from 'primeng/progressbar';
@@ -48,6 +50,7 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TimerComponent } from './components/timer.component';
+import { MetricsComponent } from './components/metrics.component';
 import { SettingsComponent } from './components/settings.component';
 import { HelpComponent } from './components/help.component';
 import { FooterComponent } from './components/footer.component';
@@ -60,6 +63,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   declarations: [
     AppComponent,
     TimerComponent,
+    MetricsComponent,
     SettingsComponent,
     HelpComponent,
     FooterComponent,
@@ -107,6 +111,8 @@ export class AppModule {
       faMinimize,
       faCircleDot,
       faChartSimple,
+      faBackwardStep,
+      faForwardStep,
     );
   }
 }
