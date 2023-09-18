@@ -34,7 +34,8 @@
       long break
     </button>
   </div>
-  <div class="flex flex-row">
+  <div class="ml-1">next: short break</div>
+  <div class="flex flex-row items-center justify-center">
     <div>pomos:</div>
     <div
       *ngFor="let _ of [].constructor(completedPomos)"
@@ -45,28 +46,42 @@
         [icon]="['far', 'circle-dot']"
       ></fa-icon>
     </div>
-    <div class="ml-1">|</div>
-    <div class="ml-1">next: short break</div>
   </div>
-  <div
-    class="my-3 font-mono font-bold text-gray-800 text-7xl lg:text-9xl font-outline-2"
-    [ngClass]="
-      timerState === timerStates.Paused
-        ? 'animate-pulse'
-        : 'animate-none'
-    "
-  >
-    <div [ngSwitch]="timerFormat">
-      <span *ngSwitchCase="'colon'">
-        {{ timeLeft | date: 'mm:ss' }}
-      </span>
-      <span *ngSwitchCase="'chars'">
-        {{ timeLeft | date: 'mm'
-        }}<span class="text-6xl lg:text-7xl">m</span
-        >{{ timeLeft | date: 'ss'
-        }}<span class="text-6xl lg:text-7xl">s</span>
-      </span>
+  <div class="flex flex-row my-3">
+    <button
+      type="button"
+      (click)="onBackwardButtonClick()"
+      class="btn-icon text-4xl mt-2"
+    >
+      <fa-icon [icon]="['fas', 'backward-step']"></fa-icon>
+    </button>
+    <div
+      class="font-mono font-bold text-gray-800 text-7xl lg:text-9xl font-outline-2 mx-2"
+      [ngClass]="
+        timerState === timerStates.Paused
+          ? 'animate-pulse'
+          : 'animate-none'
+      "
+    >
+      <div [ngSwitch]="timerFormat">
+        <span *ngSwitchCase="'colon'">
+          {{ timeLeft | date: 'mm:ss' }}
+        </span>
+        <span *ngSwitchCase="'chars'">
+          {{ timeLeft | date: 'mm'
+          }}<span class="text-6xl lg:text-7xl">m</span
+          >{{ timeLeft | date: 'ss'
+          }}<span class="text-6xl lg:text-7xl">s</span>
+        </span>
+      </div>
     </div>
+    <button
+      type="button"
+      (click)="onForwardButtonClick()"
+      class="btn-icon text-4xl mt-2"
+    >
+      <fa-icon [icon]="['fas', 'forward-step']"></fa-icon>
+    </button>
   </div>
   <div
     *ngIf="showProgressBar"
@@ -108,27 +123,21 @@
     <button
       type="button"
       (click)="onMuteButtonClick()"
+      class="btn-icon"
     >
       <fa-icon [icon]="['fas', 'volume-low']"></fa-icon>
     </button>
     <button
       type="button"
       (click)="onAutoplayButtonClick()"
+      class="btn-icon"
     >
       <fa-icon [icon]="['fas', 'repeat']"></fa-icon>
     </button>
-      <button
-        type="button"
-        (click)="onChartClick()"
-      >
-        <fa-icon
-          *ngIf="!isFullScreen"
-          [icon]="['fas', 'chart-simple']"
-        ></fa-icon>
-      </button>
     <button
       type="button"
       (click)="onFullScreenToggleButtonClick()"
+      class="btn-icon"
     >
       <fa-icon
         *ngIf="isFullScreen"
@@ -141,7 +150,18 @@
     </button>
     <button
       type="button"
+      (click)="onMetricsClick()"
+      class="btn-icon"
+    >
+      <fa-icon
+        *ngIf="!isFullScreen"
+        [icon]="['fas', 'chart-simple']"
+      ></fa-icon>
+    </button>
+    <button
+      type="button"
       (click)="onSettingsButtonClick()"
+      class="btn-icon"
     >
       <fa-icon [icon]="['fas', 'sliders']"></fa-icon>
     </button>
@@ -152,6 +172,7 @@
       [hideDelay]="250"
       tooltipPosition="bottom"
       (click)="onHelpButtonClick()"
+      class="btn-icon"
     >
       <fa-icon [icon]="['fas', 'question']"></fa-icon>
     </button>
@@ -173,6 +194,7 @@
       [ngSwitch]="currentSidebarComponent"
       class="text-2xl font-bold"
     >
+      <span *ngSwitchCase="'metrics'">Metrics</span>
       <span *ngSwitchCase="'settings'">Settings</span>
       <span *ngSwitchCase="'help'">Help</span>
       <span *ngSwitchCase="'about'">About</span>
@@ -180,6 +202,7 @@
   </ng-template>
   <ng-template pTemplate="content">
     <div [ngSwitch]="currentSidebarComponent">
+      <app-metrics *ngSwitchCase="'metrics'"></app-metrics>
       <app-settings
         *ngSwitchCase="'settings'"
         [settings]="settings"
