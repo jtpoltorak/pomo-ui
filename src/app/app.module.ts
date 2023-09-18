@@ -41,6 +41,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { ToastModule } from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ChartModule } from 'primeng/chart';
 
 import {
   ConfirmationService,
@@ -85,6 +86,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     DialogModule,
     ToastModule,
     ConfirmDialogModule,
+    ChartModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
