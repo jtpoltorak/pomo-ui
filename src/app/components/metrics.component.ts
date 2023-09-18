@@ -24,8 +24,9 @@ export class MetricsComponent implements OnInit {
       datasets: [
         {
           label: 'My First dataset',
-          backgroundColor: '#00a5e3',
-          borderColor: '#00a5e3',
+          backgroundColor: 'rgba(153, 102, 255, 0.2)',
+          borderColor: 'rgb(153, 102, 255)',
+          borderWidth: 1,
           data: [5, 5, 3, 8, 6, 0, 0],
         },
       ],
