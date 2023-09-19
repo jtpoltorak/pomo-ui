@@ -34,8 +34,8 @@
       long break
     </button>
   </div>
-  <div class="ml-1">next: short break</div>
-  <div class="flex flex-row items-center justify-center">
+  <div class="ml-1 mt-3">next: short break</div>
+  <div class="mt-3 flex flex-row items-center justify-center">
     <div>pomos:</div>
     <div
       *ngFor="let _ of [].constructor(completedPomos)"
@@ -153,10 +153,7 @@
       (click)="onMetricsClick()"
       class="btn-icon"
     >
-      <fa-icon
-        *ngIf="!isFullScreen"
-        [icon]="['fas', 'chart-simple']"
-      ></fa-icon>
+      <fa-icon [icon]="['fas', 'chart-simple']"></fa-icon>
     </button>
     <button
       type="button"
