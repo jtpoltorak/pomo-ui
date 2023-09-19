@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import * as Chart from 'chart.js';
+Chart.defaults.font.family = 'comfortaa';
 
 @Component({
   selector: 'app-metrics',
@@ -23,7 +24,7 @@ export class MetricsComponent implements OnInit {
       ],
       datasets: [
         {
-          label: 'My First dataset',
+          label: 'Pomos This Week',
           backgroundColor: 'rgba(153, 102, 255, 0.2)',
           borderColor: 'rgb(153, 102, 255)',
           borderWidth: 1,
@@ -51,7 +52,7 @@ export class MetricsComponent implements OnInit {
             },
           },
           grid: {
-            color: '#000',
+            color: '#cecec3',
             drawBorder: false,
           },
         },
@@ -60,7 +61,7 @@ export class MetricsComponent implements OnInit {
             color: '#000',
           },
           grid: {
-            color: '#000',
+            color: '#cecec3',
             drawBorder: false,
           },
         },
