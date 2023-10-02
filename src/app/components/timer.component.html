@@ -122,10 +122,17 @@
   >
     <button
       type="button"
-      (click)="onMuteButtonClick()"
+      (click)="onSoundToggleButtonClick()"
       class="btn-icon"
     >
-      <fa-icon [icon]="['fas', 'volume-low']"></fa-icon>
+      <fa-icon
+        *ngIf="!isMuted"
+        [icon]="['fas', 'bell']"
+      ></fa-icon>
+      <fa-icon
+        *ngIf="isMuted"
+        [icon]="['fas', 'bell-slash']"
+      ></fa-icon>
     </button>
     <button
       type="button"
