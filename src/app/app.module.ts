@@ -20,6 +20,8 @@ import {
 import {
   faVolumeLow,
   faVolumeMute,
+  faBell,
+  faBellSlash,
   faRepeat,
   faSliders,
   faQuestion,
@@ -102,6 +104,8 @@ export class AppModule {
     library.addIcons(
       faVolumeLow,
       faVolumeMute,
+      faBell,
+      faBellSlash,
       faRepeat,
       faSliders,
       faQuestion,

@@ -12,6 +12,7 @@ import { TimerService } from '../services/timer.service';
 import { TimerState } from '../models/timer.model';
 import { SettingsService } from '../services/settings.service';
 import { Settings } from '../models/settings.model';
+import { AudioService } from '../services/audio.service';
 
 @Component({
   selector: 'app-timer',
@@ -39,6 +40,7 @@ export class TimerComponent implements OnInit {
   private timerStateSubscription: Subscription;
 
   timerFormat: 'colon' | 'chars' = 'chars';
+  isMuted = true;
   isFullScreen = false;
   docElement: any;
   showProgressBar = true;
@@ -54,6 +56,7 @@ export class TimerComponent implements OnInit {
   constructor(
     private settingsService: SettingsService,
     private timerService: TimerService,
+    private audioService: AudioService,
     private titleService: Title,
     private datePipe: DatePipe,
     @Inject(DOCUMENT) private document: any,
@@ -63,10 +66,31 @@ export class TimerComponent implements OnInit {
       'in timer.component, just read settings = ',
       this.settings,
     );
-    if (!this.settings) {
+    if (this.settings) {
+      this.timerFormat = this.settings.timeFormat;
+      this.showProgressBar = this.settings.showProgressBar;
+    } else {
       this.settings = this.defaultSettings;
       this.settingsService.saveSettings(this.settings);
     }
+    switch (this.selectedPhase) {
+      case 'work': {
+        this.timeLeft = this.settings.workDurationMS;
+        break;
+      }
+      case 'short break': {
+        this.timeLeft = this.settings.shortBreakDurationMS;
+        break;
+      }
+      case 'long break': {
+        this.timeLeft = this.settings.longBreakDurationMS;
+        break;
+      }
+      default: {
+        this.timeLeft = this.defaultSettings.workDurationMS;
+      }
+    }
+    this.timeStart = this.timeLeft;
     this.timerService.setTimer(this.timeLeft);
     this.timeLeftSubscription =
       this.timerService.timeLeft$.subscribe(
@@ -78,6 +102,10 @@ export class TimerComponent implements OnInit {
               this.selectedPhase +
               ' / pomo',
           );
+          console.log('timeLeft = ', timeLeft);
+          if (timeLeft === 3000 && !this.isMuted) {
+            this.audioService.playCompleteSound();
+          }
         },
       );
     this.timerStateSubscription =
@@ -142,7 +170,9 @@ export class TimerComponent implements OnInit {
     this.timerService.resetTimer();
   }
 
-  onMuteButtonClick(): void {}
+  onSoundToggleButtonClick(): void {
+    this.isMuted = !this.isMuted;
+  }
 
   onAutoplayButtonClick(): void {}
 
@@ -183,19 +213,16 @@ export class TimerComponent implements OnInit {
   }
 
   onSettingsButtonClick(): void {
-    this.timerService.pauseTimer();
     this.isSidebarVisible = true;
     this.currentSidebarComponent = 'settings';
   }
 
   onHelpButtonClick(): void {
-    this.timerService.pauseTimer();
     this.isSidebarVisible = true;
     this.currentSidebarComponent = 'help';
   }
 
   onAboutButtonClick(): void {
-    this.timerService.pauseTimer();
     this.isSidebarVisible = true;
     this.currentSidebarComponent = 'about';
   }

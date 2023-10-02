@@ -25,8 +25,9 @@ export class TimerService {
     this.timeLeftSubject.asObservable();
 
   // timer state
-  private timerStateSubject =
-    new BehaviorSubject<TimerState>(TimerState.Stopped);
+  private timerStateSubject = new BehaviorSubject<TimerState>(
+    TimerState.Stopped,
+  );
   timerState$: Observable<TimerState> =
     this.timerStateSubject.asObservable();
 
@@ -46,8 +47,7 @@ export class TimerService {
           takeWhile(() => this.timeLeft >= 0),
         )
         .subscribe({
-          next: () =>
-            this.timeLeftSubject.next(this.timeLeft),
+          next: () => this.timeLeftSubject.next(this.timeLeft),
           complete: () => this.stopTimer(),
         });
     }
@@ -62,7 +62,7 @@ export class TimerService {
   }
 
   stopTimer(): void {
-    this.resetTimer();
+    // this.resetTimer();d
     this.pauseTimer();
     this.timerStateSubject.next(TimerState.Stopped);
   }
