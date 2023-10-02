@@ -3,11 +3,15 @@ import {
   HostListener,
   Inject,
   OnInit,
+  OnDestroy,
 } from '@angular/core';
 import { DatePipe, DOCUMENT } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
-import { Subscription } from 'rxjs';
+import { Store, Select } from '@ngxs/store';
+import { Observable, of, Subscription } from 'rxjs';
+
+import { TimerStateModel } from '../state/timer.model';
 import { TimerService } from '../services/timer.service';
 import { TimerState } from '../models/timer.model';
 import { SettingsService } from '../services/settings.service';
@@ -19,6 +23,10 @@ import { Settings } from '../models/settings.model';
   providers: [DatePipe],
 })
 export class TimerComponent implements OnInit {
+  @Select((state: any) => state.timer)
+  timer$: Observable<TimerStateModel | undefined> =
+    of(undefined);
+
   settings: Settings | undefined = undefined;
   readonly defaultSettings: Settings = {
     timeFormat: 'chars',
@@ -52,6 +60,7 @@ export class TimerComponent implements OnInit {
     | undefined = undefined;
 
   constructor(
+    private store: Store,
     private settingsService: SettingsService,
     private timerService: TimerService,
     private titleService: Title,

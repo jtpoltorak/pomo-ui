@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { NgxsModule } from '@ngxs/store';
+
 // Font Awesome imports
 import {
   FontAwesomeModule,
